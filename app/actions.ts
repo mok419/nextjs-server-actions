@@ -1,11 +1,11 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import postgres from "postgres";
 import { z } from "zod";
 
 let sql = postgres(process.env.DATABASE_URL || process.env.POSTGRES_URL!, {
-  ssl: "allow",
+  ssl: "require",
 });
 
 // CREATE TABLE todos (
@@ -38,7 +38,9 @@ export async function createTodo(
       VALUES (${data.todo})
     `;
 
-    revalidatePath("/");
+    //revalidatePath("/");
+    revalidateTag('todos');
+    
     return { message: `Added todo ${data.todo}` };
   } catch (e) {
     return { message: "Failed to create todo" };
@@ -66,7 +68,8 @@ export async function deleteTodo(
       WHERE id = ${data.id};
     `;
 
-    revalidatePath("/");
+    //revalidatePath("/");
+    revalidateTag('todos');
     return { message: `Deleted todo ${data.todo}` };
   } catch (e) {
     return { message: "Failed to delete todo" };
