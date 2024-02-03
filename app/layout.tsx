@@ -5,14 +5,11 @@ export const metadata = {
   description: "Example application with forms and Postgres.",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout( props : { children : React.ReactNode, components : React.ReactNode})
+   {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>{props.children}</body>
     </html>
   );
 }
