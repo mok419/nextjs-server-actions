@@ -6,5 +6,8 @@ export async function FetchItems() {
   console.log(rand)
     let res = await fetch(`https://api.vercel.app/products/${rand}`, { next: { tags: ['fetched-items'] } });
     let data = await res.json();
-    return <h1>{data.stock}</h1>
+    return <div>
+      <p>This is a fetch with seperate cache tag</p>
+          <h3>{data.stock}</h3>
+          </div>
   }

@@ -22,8 +22,11 @@ export async function TestingItems() {
     // let data = await res.json();
     return (
       <div>
+        <p>
+        This is 2nd unstable cache with seperate cache tag
+        </p>
       {res.map((item) => (
-        <h1 key={item.id}>{item.text}</h1>
+        <h3 key={item.id}>{item.text}</h3>
       ))}
       </div>
     )

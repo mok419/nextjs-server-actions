@@ -14,14 +14,8 @@ export default function Home() {
   return (
     <main>
       <TodoApp/>
-      <div>
-        This is 2nd unstable cache with seperate cache tag
-      </div>
       <TestingItems/>
-      <div>
-        This is a fetch with seperate cache tag
       <FetchItems/>
-      </div>
     </main>
   );
 }
